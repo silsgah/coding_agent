@@ -1,0 +1,65 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# =========================
+# Virtual environments
+# =========================
+venv/
+.env/
+.envrc/
+
+# =========================
+# ML training artifacts
+# =========================
+lora_checkpoints/
+mlruns/
+outputs/
+runs/
+
+# =========================
+# Dataset outputs
+# =========================
+processed_train.json
+processed_valid.json
+*.arrow
+
+# =========================
+# Raw datasets (optional)
+# =========================
+raw_data/
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# Comet / experiment tracking
+# =========================
+.comet.config
+comet_ml.config
+
+# =========================
+# OS junk
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Build artifacts
+# =========================
+build/
+dist/
+
+# =========================
+# UV lock (optional)
+# =========================
+uv.lock

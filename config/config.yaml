@@ -1,0 +1,20 @@
+model:
+  name: "meta-llama/Llama-7B-hf"
+  device: "cuda"
+  max_new_tokens: 512
+  lora:
+    r: 16
+    alpha: 32
+    target_modules: ["q_proj", "v_proj"]
+repo:
+  paths:
+    - "./my_project"
+  file_types: [".py", ".ipynb"]
+
+agent:
+  max_steps: 3
+  enable_tests: true
+
+api:
+  host: "0.0.0.0"
+  port: 8000
