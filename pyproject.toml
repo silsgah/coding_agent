@@ -1,7 +1,7 @@
 [project]
 name = "mini-coding-agent"
-version = "0.1.0"
-description = "Add your description here"
+version = "0.2.0"
+description = "A config-driven coding agent backed by fine-tuned LLMs with LoRA/QLoRA"
 readme = "README.md"
 requires-python = ">=3.11,<3.13"
 dependencies = [
@@ -11,9 +11,58 @@ dependencies = [
     "fastapi>=0.135.3",
     "pandas>=3.0.2",
     "peft>=0.18.1",
+    "pydantic>=2.0",
     "pyyaml>=6.0.3",
     "torch>=2.11.0",
     "transformers>=5.5.0",
     "trl>=1.0.0",
     "uvicorn>=0.43.0",
 ]
+
+[project.optional-dependencies]
+vllm = ["vllm>=0.4.0"]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.4",
+    "mypy>=1.10",
+    "httpx>=0.27",          # for FastAPI test client
+]
+
+[project.scripts]
+coding-agent = "main:main"
+
+# ── Ruff (linter + formatter) ────────────────────────────
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "F",    # pyflakes
+    "I",    # isort
+    "W",    # pycodestyle warnings
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+]
+ignore = ["E501"]  # line-too-long (handled by formatter)
+
+[tool.ruff.lint.isort]
+known-first-party = ["config", "domain", "infrastructure", "application", "interface"]
+
+# ── Pytest ────────────────────────────────────────────────
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+# ── mypy ──────────────────────────────────────────────────
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true

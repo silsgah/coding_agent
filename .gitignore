@@ -48,6 +48,11 @@ logs/
 comet_ml.config
 
 # =========================
+# Environment / secrets
+# =========================
+.env
+
+# =========================
 # OS junk
 # =========================
 .DS_Store
@@ -60,6 +65,20 @@ build/
 dist/
 
 # =========================
+# Testing / linting caches
+# =========================
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# =========================
 # UV lock (optional)
 # =========================
 uv.lock
+
+# =========================
+# Agent sessions (Raschka)
+# =========================
+.mini-coding-agent/
